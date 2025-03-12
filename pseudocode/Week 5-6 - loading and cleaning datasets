@@ -1,0 +1,33 @@
+BEGIN Data Cleaning and Preparation
+
+    # Step 1: Load Datasets
+    LOAD dataset "Trips_By_Distance.csv"
+    LOAD dataset "Trips_Full_Data.csv"
+
+    # Step 2: Check for Missing Values
+    IF any missing values exist:
+        REMOVE rows with missing values
+    ENDIF
+
+    # Step 3: Convert Data Types
+    CONVERT "Date" column to datetime format
+    FOR each numerical column:
+        CHECK data type
+        IF column is stored as string or object:
+            CONVERT to integer or float
+        ENDIF
+    ENDFOR
+
+    # Step 4: Check for Duplicates
+    IF duplicate rows exist:
+        REMOVE duplicate rows
+    ENDIF
+
+    # Step 5: Save Cleaned Data
+    EXPORT cleaned dataset as "Trips_by_Distance-cleaned.csv"
+    EXPORT cleaned dataset as "Trips_Full_Data-cleaned.csv"
+
+    # Step 6: Version Control
+    COMMIT changes to GitHub 
+
+END Data Cleaning and Preparation

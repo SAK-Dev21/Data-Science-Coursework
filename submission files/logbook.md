@@ -15,9 +15,25 @@ The purpose of this logbook is to record weekly the progress of this coursework.
     * `Date` :  Object instead of datetime.
 * No duplicate values.
 * All values were appropriate to their columns.
+* Exported dataset to be used for data analysis.
 
 ## Full Data dataset
 * No duplicate rows.
 * No missing values in rows.
 * Corrected the `date` column being ```object``` datatype instead of ```datetime```.
 * Changed numbers to be standard notation instead of scientific notation for readability.
+* Exported dataset to be used for data analysis.
+
+# 11.3.25
+
+## Full Data (cleaned) dataset
+
+* Calculated weekly averages of the following:
+    * Travel distance for those traveling.
+    * The weekly number of people of those staying at home.
+* Identified high frequency travel days for people who traveled:
+    * 10-25 miles.
+    * 50-100 miles.
+* Created visualisations for both prior bullet points.
+    * A histogram for weekly averages.
+    * A line chart for high frequency travel days.

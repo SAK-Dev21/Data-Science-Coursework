@@ -1,0 +1,30 @@
+BEGIN Weekly Analysis and Visualisation
+
+    # Step 1: Load Cleaned Dataset
+    LOAD dataset "Trips_Full_Data-cleaned.csv"
+
+    # Step 2: Compute Weekly Averages
+    GROUP data by "Week of Date"
+    COMPUTE mean of "Population Staying at Home" → STORE as "weekly_avg_stay_home"
+    COMPUTE mean of "Total Travel Distance" (only for travelers) → STORE as "weekly_avg_distance"
+
+    # Step 3: Create Histogram Visualisations
+    PLOT histogram for weekly_avg_stay_home
+    PLOT histogram for weekly_avg_distance
+    LABEL axes and add title
+
+    # Step 4: Identify High-Frequency Travel Days
+    FILTER rows where "Trips 10-25 Miles" > 10,000,000 → STORE as "shortTrips"
+    FILTER rows where "Trips 50-100 Miles" > 10,000,000 → STORE as "longTrips"
+
+    # Step 5: Create Scatter Plot for High-Frequency Travel Days
+    PLOT scatter plot with:
+        - X-axis = "Date"
+        - Y-axis = "Trips"
+        - Data points from shortTrips and longTrips
+    LABEL axes and add title
+
+    # Step 6: Version Control
+    COMMIT changes to GitHub
+
+END Weekly Analysis and Visualisation
