@@ -37,3 +37,12 @@ The purpose of this logbook is to record weekly the progress of this coursework.
 * Created visualisations for both prior bullet points.
     * A histogram for weekly averages.
     * A line chart for high frequency travel days.
+
+# 19.3.25
+
+* Compared the run times of processing with Pandas vs Dask.
+* I randomly chose the task for both tools to be finding the mean of a column.
+* With Dask, I obtained the results of using 5, 10, 15 and 20 workers. Surprisingly, 10 produced the shortest runtime.
+* Even more shockingly, Pandas produced a much quicker time of 0.37 seconds (2dp). This probably is because the dataset is quite short, in comparison to much larger datasets worth terabytes.
+    * An apt analogy is having a short list and using Merge sort (Dask) to sort it rather than Bubble sort (Pandas).
+* I outputted the results via a line chart of all runtimes

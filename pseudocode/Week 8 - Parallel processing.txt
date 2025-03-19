@@ -1,0 +1,74 @@
+BEGIN Parallel vs Sequential Processing
+
+    # Step 1: Initialize Parallel Computing Environment
+    PRINT "Starting Dask Cluster with 10 workers..."
+    CREATE Dask cluster with 10 workers
+    CREATE Dask client to manage workers
+
+    # Step 2: Load Dataset
+    PRINT "Loading dataset..."
+    SET dataset_path TO "Trips_by_Distance-cleaned.csv"
+    
+    # Load dataset using Pandas
+    df_pandas ← LOAD dataset_path with Pandas
+    
+    # Load dataset using Dask
+    df_dask ← LOAD dataset_path with Dask
+
+    # Step 3: Define Function to Run Dask Task
+    FUNCTION run_dask_task(n_workers):
+        PRINT "Scaling Dask cluster to", n_workers, "workers..."
+        SCALE existing cluster to n_workers
+        
+        START TIMER
+        COMPUTE mean of "Number of Trips" column using Dask
+        STOP TIMER
+        
+        RECORD total trips and execution time
+        PRINT "Dask Execution Time (", n_workers, "workers):", execution_time, "seconds"
+        
+        RETURN execution_time
+
+    # Step 4: Define Function to Run Pandas Task
+    FUNCTION run_pandas_task():
+        PRINT "Running computation using Pandas..."
+        
+        START TIMER
+        COMPUTE mean of "Number of Trips" column using Pandas
+        STOP TIMER
+        
+        RECORD total trips and execution time
+        PRINT "Pandas Execution Time:", execution_time, "seconds"
+        
+        RETURN execution_time
+
+    # Step 5: Run Dask Computation with Different Worker Counts
+    PRINT "Running Dask with 10 workers..."
+    execution_time_10 ← run_dask_task(10)
+    
+    PRINT "Running Dask with 5 workers..."
+    execution_time_5 ← run_dask_task(5)
+    
+    PRINT "Running Dask with 15 workers..."
+    execution_time_15 ← run_dask_task(15)
+    
+    PRINT "Running Dask with 20 workers..."
+    execution_time_20 ← run_dask_task(20)
+
+    # Step 6: Run Pandas Computation
+    PRINT "Running Pandas computation..."
+    execution_time_pandas ← run_pandas_task()
+
+    # Step 7: Store Execution Time Results
+    STORE execution times for Pandas and Dask (5, 10, 15, 20 workers)
+
+    # Step 8: Create Line Chart to Compare Execution Time
+    PLOT execution time for Pandas and Dask configurations
+    LABEL axes and title
+    ROTATE x-axis labels for readability
+    DISPLAY graph
+
+    # Step 9: Commit to GitHub
+    COMMIT changes to GitHub
+
+END Parallel vs Sequential Processing
