@@ -46,3 +46,10 @@ The purpose of this logbook is to record weekly the progress of this coursework.
 * Even more shockingly, Pandas produced a much quicker time of 0.37 seconds (2dp). This probably is because the dataset is quite short, in comparison to much larger datasets worth terabytes.
     * An apt analogy is having a short list and using Merge sort (Dask) to sort it rather than Bubble sort (Pandas).
 * I outputted the results via a line chart of all runtimes
+
+# 27.3.25
+
+* Created regression models to see which one best predicts the frequency of travel based on trip distances, for the distance dataset.
+* I compared each of the models by evaluating their r^2 scores and mae (mean average error).
+* The dataset reflected a strong linear regression.
+* I created visualisations for the results: a residual plot for all, a regression plot for linear and polynomial regression and a scatter plot for multiple regression.

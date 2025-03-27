@@ -1,0 +1,46 @@
+BEGIN Regression modelling
+
+    # Step 1: Set up Environment
+    IMPORT libraries: pandas, dask, sklearn, seaborn, matplotlib
+    LOAD dataset using both Dask (for large-scale readiness) and Pandas (for actual modelling)
+
+    # Step 2: Set up input and target columns for Linear, Multiple and Polynomial Regression
+    FOR Linear Regression:
+        SET x to one input feature (e.g., Trips 10-25)
+        SET y to target column (e.g., Total Trips)
+
+    FOR Multiple Regression:
+        SET x to multiple input features (e.g., Trips <1, Trips 10-25, Trips 250-500)
+        SET y to target column (e.g., Total Trips)
+
+    FOR Polynomial Regression:
+        SET x to one input feature (e.g., Trips 10-25)
+        APPLY PolynomialFeatures transformation to x with degree 2
+        SET y to target column (e.g., Total Trips)
+
+        # NOTE: The following steps are the exact same for all 3 regression models once x and y are defined.
+
+    # Step 3: Set up Model
+    SPLIT x and y into training and testing subsets using train_test_split()
+        SET x_train, x_test, y_train, y_test
+
+    INITIALISE LinearRegression model
+    FIT model using x_train and y_train
+    PREDICT using x_test to get y_predict
+
+    # Step 4: Evaluate Model
+    CALCULATE Mean Absolute Error (MAE)
+    CALCULATE R² Score
+
+    # Step 5: Visualise Results
+    IF Linear or Polynomial Regression:
+        PLOT regression line using seaborn.regplot
+        SET appropriate axis labels and title
+
+    IF Multiple Regression:
+        PLOT predicted vs actual values using seaborn.scatterplot
+
+    PLOT residuals by subtracting y_predict from y_test
+    CREATE residual plot with predicted values on x-axis and residuals on y-axis
+
+END Regression modelling
